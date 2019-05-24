@@ -1,0 +1,147 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <!--
+    <div class="jumbotron tex-center">
+        <h1>Welcome To FlaskApp</h1>
+        <p class="lead">This application is Han Sun.</p>
+    </div>
+    -->
+    <!-- Carousel
+    ================================================== -->
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <img class="first-slide" src="/static/images/LA_winter_skyline.png" alt="First slide" style="opacity: 0.5;">
+          <div class="container">
+            <div class="carousel-caption">
+                <h1>Our Mission</h1>
+              <p>This database intends to provide a testbed for seismic building responses using Nonlinear Response History Analysis collected from both designers and researchers.</p>
+              <p><a class="btn btn-lg btn-primary" href="/register" style="background: none;border: 2px solid; border-color:white;" role="button">Sign up today</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img class="second-slide" src="/static/images/demo_app.png" alt="Second slide" style="opacity: 0.85;">
+          <div class="container">
+            <div class="carousel-caption">
+                <h1>Demo</h1>
+              <p>A demostration on using this database to predict building seismic responses across Los Angeles Area</p>
+              <p><a class="btn btn-lg btn-primary" href="#" style="background: none;border: 2px solid; border-color:white;" role="button">Learn more</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img class="third-slide" src="/static/images/ucla.jpg" alt="Third slide"  style="opacity: 0.7;">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Civil and Environmental Engineering Department at UCLA</h1>
+              <p></p>
+              <p><a class="btn btn-lg btn-primary" href="http://www.cee.ucla.edu/" style="background: none;border: 2px solid; border-color:white;" role="button">Contact us</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div><!-- /.carousel -->
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Marketing Icons Section -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Research Highlight
+                </h1>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4><i class="fa fa-fw fa-check"></i> Machine Learning Application</h4>
+                    </div>
+                    <div class="panel-body">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
+                        <a href="#" class="btn btn-default">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4><i class="fa fa-fw fa-gift"></i> Large Building Pool</h4>
+                    </div>
+                    <div class="panel-body">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
+                        <a href="#" class="btn btn-default">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4><i class="fa fa-fw fa-compass"></i> Easy to Use</h4>
+                    </div>
+                    <div class="panel-body">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
+                        <a href="#" class="btn btn-default">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Features Section -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="page-header">Overview</h2>
+            </div>
+            <div class="col-md-6">
+              <p class="text-justify">Tall buildings have become a staple of central business districts in the United States and other parts of the world, reflecting the intersection of increased urbanization with the constraints of limited land space. Their physical size and the concentration of people and services is such that any disruption to their functionality in the wake of an extreme event can be detrimental to the economic vitality of the urban centers that they occupy. This provides an added incentive to ensure that tall buildings are resilient to natural and man-made hazards, particularly when they are in locations of dense spatial clustering.</p>
+              <p class="text-justify">This project seeks to capitalize on advancements in remote sensing and data transfer technologies, as well as Los Angeles' standing as the only U.S. city with a mandatory seismic instrumentation program, by developing a test-bed framework to enhance the seismic resilience of tall buildings located in dense urban environments. Existing instrumentation will be supplemented to create a distributed wireless sensor network within a carefully selected group of tall buildings in Los Angeles that will enable (1) informed decision-making in the post-earthquake environment at the building- and community-scales,
+                (2) the creation of a repository of tall building response data that can be used by practitioners, educators and researchers, (3) the use of recorded dynamic response data to improve modeling techniques for tall buildings and (4) life cycle performance assessment of the test bed buildings using Bayesian analysis techniques for model updating as information becomes available from earthquake response measurements.</p>
+              <p class="text-justify">An educational and outreach program will be established to create new learning modules for undergraduate students, which provide an appreciation of the critical relationship between the response of buildings to extreme events and the functionality of the communities they serve. The research program will include active participation from undergraduate and graduate students, local building officials, and researchers and practitioners with interests in performance assessment of tall buildings, application of sensor networks for monitoring and decision making, and development of local, regional, and national standards, guidelines, and codes.</p>
+            </div>
+            <div class="col-md-6">
+                <img class="img-responsive" src="http://placehold.it/700x450" alt="">
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Call to Action Section -->
+        <div class="well">
+            <div class="row">
+                <div class="col-md-1">
+                    <img class="img-responsive img-portfolio img-hover" src="/static/images/nsf_80.png" alt="">
+                </div>
+                <div class="col-md-8">
+                    <p>This project has been funded by NSF CMMI Division of Civil, Mechanical,
+                      & Manufact Inn ENG Directorate For Engineering starting from October 1st 2015.</p>
+                </div>
+                <div class="col-md-3">
+                    <a class="btn btn-lg btn-default btn-block" href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=1538747&HistoricalAwards=false">Award Number: 1538747</a>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+    </div><!-- /.container -->
+
+{% endblock %}
+
+

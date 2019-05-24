@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+{% block body %}
+<h1>Data Visualization</h1>
+
+<div container>
+    {% for id in ids %}
+    <div class="col-md-6">
+        <div id="{{id}}"></div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

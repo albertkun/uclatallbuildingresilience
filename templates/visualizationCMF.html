@@ -1,0 +1,166 @@
+{% extends 'layout.html' %}
+{% block body %}
+<style>
+        .site-icon{
+            width: 18px !important;
+            height: 18px !important;
+            border-radius: 20px;
+            border: 0px solid #3F51B5;
+            text-align: center;
+            color: rgb(255, 255, 255);
+            background-color: rgba(22, 123, 255, 0.863);
+            font-size: 10px;
+          }
+</style>
+<h1>2D Concrete Moment Frame Model</h1>
+{% from "includes/_formhelpers.html" import render_field %}
+<div class="col-md-3">
+    <form method="POST" action="">
+        <div class="form-group">
+            {{render_field(form.earthquake_select, class_="form-control")}}
+        </div>
+        <div class="form-group">
+            {{render_field(form.building_select, class_="form-control")}}
+        </div>
+        <div class="form-group">
+            {{render_field(form.site_select, class_="form-control",**{"onchange":"console.log(value)"})}}
+        </div>
+        <p><input type="submit" class="btn btn-primary" value="Submit"></p>
+    </form>
+</div>
+
+<div class="col-md-8">
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var epicenter = {
+            lat: 34.2057,
+            lng: -118.5539,
+            markerOptions:{
+                radius: 50,
+                fillColor: '#AF1E23',
+                color: "white",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.5,
+                },
+            };
+        var map_center = {lat: 34.2257, lng: -118.4539};
+        var qmap = L.map('map').setView(map_center, 8);
+        //var map = new google.maps.Map(document.getElementById('map'), {
+          //zoom: 10,
+          //center: epicenter
+        //});
+        L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}{r}.{ext}', {
+          attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+          subdomains: 'abcd',
+          minZoom: 0,
+          maxZoom: 18,
+          ext: 'png'
+        }).addTo(qmap);
+        
+        var contentString = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Northridge</h1>'+
+            '<div id="bodyContent">'+
+            '<p><b>Northridge Earthquake, </b>, ' +
+            'A 6.7 Magnitude earthquake occured in Los Angeles in Jan 17 1994. '+
+            '</p>'+
+            '</div>'+
+            '</div>';
+
+        L.circleMarker([epicenter.lat,epicenter.lng],epicenter.markerOptions).addTo(qmap).bindPopup(contentString)
+        
+
+
+        ///////  begin area to add markers to the map
+
+        
+        //////// end marker adding
+
+//        var marker = new google.maps.Marker({
+//          position: epicenter,
+//          map: map
+//        });
+
+//        marker.addListener('click', function() {
+//          infowindow.open(map, marker);
+//        });
+//
+      
+
+        var IDlist=[]
+    
+    
+        customCircleMarker = L.Marker.extend({
+            options: { 
+               type: '',
+               id:'',
+               lat:'',
+               lon:''
+            }
+         });
+    
+        function addMarker(markerData) {
+            IDlist.push(marker_data.id)
+            //console.log('adding marker '+marker_data.type)
+            // create the featuregroup
+            // Add marker to map at click location; add popup window
+            // console.log(marker_data.lat,marker_data.lon);
+            // logic for the campaign offices
+            if (marker_data.lat == null) {
+              return;
+            }
+            //styling everything else as blue
+            else {
+              markerOptions =
+                {
+                    icon: L.divIcon({
+                        className: 'site-icon',
+                        html: "<div>"+marker_data.id+"</div>"
+                        }),
+                                     radius: 5,
+                                      fillColor: '#AF1E23',
+                                     color: "white",
+                    weight: 1,
+                    opacity: 1,
+                    fillOpacity: 0.9,
+                    id: marker_data.id,
+                    lat: marker_data.lat,
+                    lon: marker_data.lon
+                }
+            }
+            console.log(marker_data)
+            //console.log('this is the target layer'+targetLayer)
+            var anything = new customCircleMarker([marker_data.lat, marker_data.lon], markerOptions).bindPopup("<div class='popupDate'>"+marker_data.id+"</div>").addTo(qmap);
+          }
+ //         var myIcon = L.divIcon({className: 'site-icon'});
+ //         var circle = L.marker([34.508, -118.15], {
+ //           icon: L.divIcon({
+ //               className: 'site-icon',
+ //               html: "<div>5</div>"
+ //               }),
+ //                            radius: 5,
+ //                             fillColor: '#AF1E23',
+ //                            color: "white",
+ //       }).addTo(qmap);
+        
+        {% for site in site_query %}
+            marker_data = {
+                id: {{ site.idsite }},
+                lat: {{ site.latitude}},
+                lon: {{ site.longitude}}
+            }
+            addMarker(marker_data)
+        {% endfor %}
+    
+        }
+    
+      //var data = JSON.parse('{{ site_query | tojson | safe}}'); -->
+    </script>
+    
+</div>
+
+
+{% endblock %}
